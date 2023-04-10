@@ -18,6 +18,7 @@ const closesubBtn = document.querySelector(".close-submit");
 const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const acceptBtn = document.querySelector(".btn-valider");
 
+//close modal event
 acceptBtn.addEventListener("click" , closeModal);
 
 
@@ -30,6 +31,8 @@ closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  modalbg.style.visibility = "visible";
+
 }
 //close modal form
 function closeModal() {  
@@ -41,7 +44,6 @@ function closeModal() {
 }
 
 //empeche le sumbit par défaut
-
 form.addEventListener("submit", function (event) {
     event.preventDefault();
     validate();
@@ -70,7 +72,7 @@ function validate() {
   // prenom
   
   const prenomForm = document.getElementById("first");
-  console.log(prenomForm.value.length);
+  
   
   if(prenomForm.value.length < 2 && prenomForm.value != undefined)
   {
@@ -81,7 +83,7 @@ function validate() {
 
   //nom
   const nomForm = document.getElementById("last");
-  console.log(nomForm.value.length)
+  
 
   if(nomForm.value.length < 2 && nomForm.value != undefined)
   {
@@ -93,7 +95,7 @@ function validate() {
 
   //mail
   const mailForm = document.getElementById("email");
-  console.log(mailForm.value.length)
+  
   if (!regex.test(String(mailForm.value).toLowerCase()))
   {  
       error = true;
@@ -104,7 +106,7 @@ function validate() {
 
   //date
   const dateForm = document.getElementById("birthdate");
-  console.log(dateForm.value.length);
+  
   if(dateForm.value == "")
   {
     
@@ -115,7 +117,7 @@ function validate() {
 
   //nbre tournoi
   const quantityForm = document.getElementById("quantity");
-  console.log(quantityForm.value.length);
+  
 
   if(quantityForm.value.match(/^[0-9]+$/) == null)
   {
@@ -133,7 +135,7 @@ function validate() {
     radioForm = document.getElementById("location" + i);
     if(radioForm.checked)
     {
-      console.log(radioForm.value);
+      
       checkedItem = true
     }
   }
@@ -147,7 +149,7 @@ function validate() {
     const checkboxcgu = document.getElementById("checkbox1");
     if(!checkboxcgu.checked)
     {
-      alert("accepter gcu")
+      setError(checkboxcgu.parentElement , "veuillez accepter les conditions d'utilisations" , true);
       error = true; 
     }
 
@@ -155,7 +157,8 @@ function validate() {
     if(!error)
     {
       validationForm.style.visibility = "visible";
-      modalbg.style.visibility = "hidden";
+      
+      validationForm.style.display = "block";
     }
 
 }

@@ -28,6 +28,8 @@ p {
 
 img {
   padding-right: 1rem;
+  height: auto;
+  width: auto;
 }
 
 .topnav {
@@ -571,10 +573,43 @@ footer {
   position: relative;
   top:-50px
 }
-
+@media all and (width < 950px)
+{
+  .hero-headline{
+    font-size: 3em;
+  }
+}
 @media all and (width < 500px) {
+  .header-logo{
+    width: 75%;
+  }
+
+  .topnav .main-navbar{
+    margin-top: 16px;
+    
+
+  }
+
+   .topnav.responsive .icon{
+    margin-top: 0px;
+
+  }
+
+  
+
+  .hero-headline{
+    font-size: 2em;
+  }
+
+  .hero-content{
+    min-width: auto;
+  }
+
+
   .submit-ok{
     width: 100%;
+    top: -860px;
+    height: 850px;
   }
   
 }
